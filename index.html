@@ -1,1 +1,230 @@
-<html></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时钟表盘</title>
+    <style>
+        main{
+            width: 100%;
+        }
+        .circle{
+            border: 5px solid black;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            margin: 100px auto;
+            position: relative;
+            border-top-color: chartreuse;
+            border-bottom-color: darkorange;
+            border-right-color: deepskyblue;
+            border-left-color: slateblue;
+            background: radial-gradient(circle,navajowhite,cyan,yellowgreen,pink,gray);
+            background-position: 300px 300px;
+        }
+        .twelve{
+            width: 30px;
+            height: 30px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            left: 285px;
+        }
+        .one{
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 42px;
+            left: 440px;
+        }
+        .two{
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 140px;
+            left: 538px;
+        }
+        .three{
+            width: 30px;
+            height: 30px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 285px;
+            left: 570px;
+        }
+        .four{
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 440px;
+            left: 538px;
+        }
+        .five{
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 538px;
+            left: 440px;
+        }
+        .six{
+            width: 30px;
+            height: 30px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 570px;
+            left: 285px;
+        }
+        .seven{
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 538px;
+            left: 140px;
+        }
+        .eight{
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 440px;
+            left: 42px;
+        }
+        .nine{
+            width: 30px;
+            height: 30px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 285px;
+        }
+        .ten{
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 140px;
+            left: 42px;
+        }
+        .eleven{
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 42px;
+            left: 140px;
+        }
+        .point{
+            width: 40px;
+            height: 40px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            top: 280px;
+            left: 280px;
+            z-index: 100;
+        }
+        div{
+            width: 600px;
+            height: 30px;
+            position: absolute;
+            top: 285px;
+        }
+        #hours{
+            animation: shijian 43200s linear infinite;
+        }
+        #hours section{
+            width: 240px;
+            height: 30px;
+            background-color: blue;
+            position: absolute;
+            left: 80px;
+            border-radius: 20px;
+        }
+        #minutes{
+            animation: shijian 3600s linear infinite;
+        }
+        #minutes section{
+            width: 280px;
+            height: 24px;
+            background-color: green;
+            position: absolute;
+            left: 40px;
+            margin-top: 3px;
+            border-radius: 20px;
+
+        }
+        #seconds{
+            animation: shijian 60s linear infinite;
+        }
+        #seconds section{
+            width: 360px;
+            height: 18px;
+            background-color: orangered;
+            margin-top: 6px;
+            border-radius: 20px;
+        }
+        @keyframes shijian{
+            to{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="circle">
+            <span class="twelve"></span>
+            <span class="one"></span>
+            <span class="two"></span>
+            <span class="three"></span>
+            <span class="four"></span>
+            <span class="five"></span>
+            <span class="six"></span>
+            <span class="seven"></span>
+            <span class="eight"></span>
+            <span class="nine"></span>
+            <span class="ten"></span>
+            <span class="eleven"></span>
+            <span class="point"></span>
+            <div id="hours">
+                <section></section>
+            </div>
+            <div id="minutes">
+                <section></section>
+            </div>
+            <div id="seconds">
+                <section></section>
+            </div>
+        </section>
+        <script>
+            var time = new Date();
+            var hours = time.getHours();
+            var minutes = time.getMinutes();
+            var seconds = time.getSeconds();
+            hours = -3*60*60 - hours*60*60 - minutes*60 - seconds;
+            minutes = -15*60 - minutes*60 - seconds;
+            seconds = -15 - seconds;
+            var shi = document.getElementById('hours');
+            var fen = document.getElementById('minutes');
+            var miao = document.getElementById('seconds');
+            shi.style.animationDelay = hours + 's';
+            fen.style.animationDelay = minutes + 's';
+            miao.style.animationDelay = seconds + 's';
+        </script>
+    </main>
+</body>
+</html>
